@@ -1,64 +1,59 @@
 const express = require('express')
+const path = require('path')
+const exphbs = require('express-handlebars')
+
 const graphqlHTTP = require('express-graphql')
-const { buildSchema } = require('graphql')
+const config = require('dotenv').config();
 
-require('dotenv').config();
-
-const auth = require('./auth')
-
-const schema = buildSchema(`
-  type Name {
-    fname: String
-    lname: String
-  }
-  type Query {
-    hello: String!  # Non-nullable
-    name: Name
-    tags(minLength: Int): [String]
-  }
-`)
-
-const root = {
-  hello: () => 'Hello world!',
-  tags: (args) => {
-    let tags = ['user', 'developer', 'front-end']
-    if (args.minLength)
-      tags = tags.filter(tag => tag.length >= args.minLength)
-    return tags
-  },
-  name: {
-    fname: 'Jitendra',
-    lname: 'Nirnejak'
-  }
-}
+const graphql = require('./graphql')
+const { logger } = require('./middleware/logger')
+const { Users } = require('./models')
 
 const app = express();
+// Init Logger
+app.use(logger)
 
-app.use('/graphql', graphqlHTTP({
-  schema: schema,
-  rootValue: root,
-  graphiql: true
-}));
+// Handlebars Middleware
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
+app.set('view engine', 'handlebars')
 
-app.get('/users', (req, res) => {
-  let tags = ['welcome', 'hello', 'word', 'something']
+// Body Parser Middleware
+app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
 
-  // Filters
-  if (req.query.length) {
-    tags = tags.filter(tag => tag.length < req.query.length)
+app.get('/', (req, res) => {
+  let members = new Users()
+  let context = {
+    title: 'Member App',
+    members: members.getUsers()
   }
-
-  res.json({
-    message: 'Welcome!',
-    tags
-  })
+  res.render('index', context)
 })
 
 app.get('/', (req, res) => {
-  console.log(auth.Auth())
+  res.sendFile(path.join(__dirname, 'public', 'index.html'))
+})
+
+app.get('/welcome', (req, res) => {
   res.send('Welcome')
 })
 
-app.listen(4000, () => {
-  console.log("Running a GraphQL API server at localhost:4000/graphql")
+// Set a static folder using Middleware
+app.use(express.static(path.join(__dirname, 'public')))
+
+// Using Routes for API
+app.use('/api/members', require('./routes/api/members'))
+
+// GraphQL Middleware
+app.use('/graphql', graphqlHTTP({
+  schema: graphql.schema,
+  rootValue: graphql.root,
+  graphiql: true
+}));
+
+
+const PORT = process.env.PORT || config.parsed.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Running a GraphQL API server at localhost:${PORT}/graphql`)
 });

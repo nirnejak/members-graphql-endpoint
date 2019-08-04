@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index",
+    "dev": "nodemon index"
   },
   "author": "Jitendra Nirnejak",
   "license": "ISC",
@@ -12,7 +13,12 @@
     "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "express-graphql": "^0.9.0",
+    "express-handlebars": "^3.1.0",
     "graphql": "^14.4.2",
+    "moment": "^2.24.0",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
     "nodemon": "^1.19.1"
   }
 }
