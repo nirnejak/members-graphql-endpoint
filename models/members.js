@@ -13,7 +13,7 @@ class Members {
       this.id = uuid.v4()
       this.name = params.name
       this.email = params.email
-      this.status = params.active
+      this.status = params.status
       this.skills = params.skills
       this.work = {
         isEmployed: params.work.isEmployed,
@@ -59,7 +59,7 @@ class Members {
 
     if (this.id) member["id"] = this.id
     if (this.name) member["name"] = this.name
-    if (this.name) member["name"] = this.name
+    if (this.email) member["email"] = this.email
     if (this.status) member["status"] = this.status
     if (this.skills) member["skills"] = this.skills
     if (this.work) member["work"] = this.work

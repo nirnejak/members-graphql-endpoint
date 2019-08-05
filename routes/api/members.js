@@ -21,8 +21,8 @@ router.post('/', (req, res) => {
   if (!req.body.name || !req.body.email) {
     res.status(400).json({ message: "Please include a name and email" })
   } else {
-    const members = new Members(req.body)
-    res.json(members.save().values())
+    const member = new Members(req.body)
+    res.json(member.save().values())
   }
 })
 
