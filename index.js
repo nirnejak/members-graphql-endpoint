@@ -7,7 +7,7 @@ const config = require('dotenv').config();
 
 const graphql = require('./graphql')
 const { logger } = require('./middleware/logger')
-const { Users } = require('./models')
+const { Members } = require('./models/members')
 
 const app = express();
 // Init Logger
@@ -22,10 +22,9 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
 app.get('/', (req, res) => {
-  let members = new Users()
   let context = {
     title: 'Member App',
-    members: members.getUsers()
+    members: Members.all()
   }
   res.render('index', context)
 })

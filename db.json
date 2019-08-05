@@ -1,0 +1,120 @@
+{
+  "members": [
+    {
+      "id": "1",
+      "name": "Jitendra Nirnejak",
+      "email": "jeetnirnejak@gmail.com",
+      "status": "active",
+      "skills": [
+        "react",
+        "css",
+        "html",
+        "css",
+        "javascript",
+        "node.js"
+      ],
+      "work": {
+        "isEmployed": true,
+        "jobTitle": "Software Developer",
+        "company": "Inkoop"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Mayank Verma",
+      "email": "mayanksonty@gmail.com",
+      "status": "active",
+      "skills": [
+        "html",
+        "css",
+        "javascript",
+        "node.js",
+        "php",
+        "mysql"
+      ],
+      "work": {
+        "isEmployed": true,
+        "jobTitle": "Associate Software Developer",
+        "company": "Accenture"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Monika Sahu",
+      "email": "sahu21.monika@gmail.com",
+      "status": "active",
+      "skills": [
+        "visualizer",
+        "html",
+        "css",
+        "javascript"
+      ],
+      "work": {
+        "isEmployed": true,
+        "jobTitle": "UI Developer",
+        "company": "Kony Labs"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Hemant Nirmalkar",
+      "email": "hemantnirmalkar@gmail.com",
+      "status": "active",
+      "skills": [
+        "html",
+        "css",
+        "javascript",
+        "jquery",
+        "node.js"
+      ],
+      "work": {
+        "isEmployed": false
+      }
+    },
+    {
+      "id": "8bbef7fd-8d62-4f9e-9cf4-f5670cc1a887",
+      "name": "Jitendra Nirnejak",
+      "email": "jeetnirnejak@gmail.com",
+      "status": "inactive",
+      "skills": [
+        "react",
+        "scss",
+        "html",
+        "css",
+        "javascript",
+        "node.js"
+      ],
+      "work": {}
+    },
+    {
+      "id": "b164d9b4-11fa-42ac-8a15-815af1d7f8eb",
+      "name": "Jitendra Nirnejak",
+      "email": "jeetnirnejak@gmail.com",
+      "status": "inactive",
+      "skills": [
+        "react",
+        "scss",
+        "html",
+        "css",
+        "javascript",
+        "node.js"
+      ],
+      "work": {}
+    },
+    {
+      "id": "9c0b0fb0-0905-451a-a62c-b0993250883d",
+      "name": "Jitendra Nirnejak",
+      "email": "jeetnirnejak@gmail.com",
+      "status": "inactive",
+      "skills": [
+        "react",
+        "scss",
+        "html",
+        "css",
+        "javascript",
+        "node.js"
+      ],
+      "work": {}
+    }
+  ]
+}
