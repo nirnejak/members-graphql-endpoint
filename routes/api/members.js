@@ -26,6 +26,18 @@ router.post('/', (req, res) => {
   }
 })
 
+router.put('/:id', (req, res) => {
+  let member = new Members()
+  if (member.get({ id: req.params.id })) {
+    member.status = req.body.status
+    member.skills = req.body.skills
+    member.work = req.body.work
+    res.json(member.save().values())
+  } else {
+    res.status(400).json({ message: `No member with the id of ${req.params.id}` })
+  }
+})
+
 router.delete('/:id', (req, res) => {
   let member = new Members()
   if (member.get({ id: req.params.id })) {

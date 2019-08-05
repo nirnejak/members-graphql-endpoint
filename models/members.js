@@ -4,11 +4,10 @@ const uuid = require('uuid')
 
 const config = require('dotenv').config();
 
-process.env.DB_USERNAME || config.parsed.DB_USERNAME || 'USERNAME'
 class Members {
   constructor(params) {
-    this.adapter = new FileSync('db.json')
-    this.db = low(this.adapter).get('members')
+    this.adapter = new FileSync(process.env.DB_LOCATION || config.parsed.DB_LOCATION || 'db.json')
+    this.collection = low(this.adapter).get('members')
 
     if (params) {
       this.id = uuid.v4()
@@ -27,21 +26,21 @@ class Members {
   }
 
   static all = () => {
-    const adapter = new FileSync('db.json')
+    const adapter = new FileSync(process.env.DB_LOCATION || config.parsed.DB_LOCATION || 'db.json')
     const db = low(adapter)
 
     return db.get('members').value()
   }
 
   static filter = (params) => {
-    const adapter = new FileSync('db.json')
+    const adapter = new FileSync(process.env.DB_LOCATION || config.parsed.DB_LOCATION || 'db.json')
     const db = low(adapter)
 
     return db.get('members').filter(params).value()
   }
 
   get = param => {
-    let member = this.db.find(param).value()
+    let member = this.collection.find(param).value()
     if (member) {
       this.id = member.id
       this.name = member.name
@@ -78,11 +77,12 @@ class Members {
     if (this.skills) newUser["skills"] = this.skills
     if (this.work) newUser["work"] = this.work
 
-    this.db.push(newUser).write()
+    this.collection.remove({ id: this.id }).write()
+    this.collection.push(newUser).write()
     return this
   }
 
-  delete = () => this.db.remove({ id: this.id }).write()
+  delete = () => this.collection.remove({ id: this.id }).write()
 }
 
 exports.Members = Members

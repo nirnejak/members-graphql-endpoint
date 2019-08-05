@@ -1,25 +1,6 @@
 {
   "members": [
     {
-      "id": "1",
-      "name": "Jitendra Nirnejak",
-      "email": "jeetnirnejak@gmail.com",
-      "status": "active",
-      "skills": [
-        "react",
-        "css",
-        "html",
-        "css",
-        "javascript",
-        "node.js"
-      ],
-      "work": {
-        "isEmployed": true,
-        "jobTitle": "Software Developer",
-        "company": "Inkoop"
-      }
-    },
-    {
       "id": "2",
       "name": "Mayank Verma",
       "email": "mayanksonty@gmail.com",
@@ -36,23 +17,6 @@
         "isEmployed": true,
         "jobTitle": "Associate Software Developer",
         "company": "Accenture"
-      }
-    },
-    {
-      "id": "3",
-      "name": "Monika Sahu",
-      "email": "sahu21.monika@gmail.com",
-      "status": "active",
-      "skills": [
-        "visualizer",
-        "html",
-        "css",
-        "javascript"
-      ],
-      "work": {
-        "isEmployed": true,
-        "jobTitle": "UI Developer",
-        "company": "Kony Labs"
       }
     },
     {
@@ -107,6 +71,41 @@
       "email": "hemant40football@gmail.com",
       "work": {
         "isEmployed": false
+      }
+    },
+    {
+      "id": "1a8e8511-938c-4ef9-b15f-9695afa208b0",
+      "name": "Jitendra Nirnejak",
+      "email": "jeetnirnejak@gmail.com",
+      "work": {
+        "isEmployed": true
+      }
+    },
+    {
+      "id": "d90e858d-537a-4179-8f98-5731cf5dcc80",
+      "name": "Jitendra Nirnejak",
+      "email": "jeetnirnejak@gmail.com",
+      "work": {
+        "isEmployed": true
+      }
+    },
+    {
+      "id": "1",
+      "name": "Jitendra Nirnejak",
+      "email": "jeetnirnejak@gmail.com",
+      "status": "active",
+      "skills": [
+        "react",
+        "css",
+        "html",
+        "css",
+        "javascript",
+        "node.js"
+      ],
+      "work": {
+        "isEmployed": true,
+        "jobTitle": "Software Developer",
+        "company": "Inkoop"
       }
     }
   ]
