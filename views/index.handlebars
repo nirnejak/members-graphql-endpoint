@@ -1,4 +1,4 @@
-<h1>{{title}}</h1>
+<h1 style="margin-top: 20px;">{{title}}</h1>
 
 <form action="/api/members" method="POST">
   <label for="name">Name</label>
@@ -6,14 +6,16 @@
 
   <label for="email">Email</label>
   <input type="text" name="email" id="email">
-</form>
 
+  <button type="submit">Send</button>
+</form>
+<hr>
 <h4>Members</h4>
 <table>
   <thead>
     <tr>
-      <td>Name</td>
-      <td>Email</td>
+      <th>Name</th>
+      <th>Email</th>
     </tr>
   </thead>
   <tbody>
@@ -22,6 +24,6 @@
       <td>{{this.name}}</td>
       <td>{{this.email}}</td>
     </tr>
-    {{#each}}
+    {{/each}}
   </tbody>
 </table>
