@@ -1,5 +1,7 @@
 const { buildSchema } = require('graphql')
 
+const { Member } = require('./models/members')
+
 exports.schema = buildSchema(`
   type Name {
     fname: String
@@ -10,7 +12,7 @@ exports.schema = buildSchema(`
     jobTitle: String
     company: String
   }
-  type User {
+  type Member {
     id: Int
     name: String
     email: String
@@ -22,6 +24,8 @@ exports.schema = buildSchema(`
     hello: String!  # Non-nullable
     name: Name
     tags(minLength: Int): [String]
+    member(id: Int): Member
+    members: [Member]
   }
 `)
 
@@ -36,5 +40,14 @@ exports.root = {
   name: {
     fname: 'Jitendra',
     lname: 'Nirnejak'
+  },
+  member: (args) => {
+    if (args.id) {
+      if (member.get({ id: req.params.id })) {
+        return member.values()
+      } else {
+        return { message: `No member with the id of ${req.params.id}` }
+      }
+    }
   }
 }

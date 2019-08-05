@@ -8,7 +8,7 @@ process.env.DB_USERNAME || config.parsed.DB_USERNAME || 'USERNAME'
 class Members {
   constructor(params) {
     this.adapter = new FileSync('db.json')
-    this.db = low(this.adapter)
+    this.db = low(this.adapter).get('members')
 
     if (params) {
       this.id = uuid.v4()
@@ -41,9 +41,6 @@ class Members {
   }
 
   get = param => {
-    this.adapter = new FileSync('db.json')
-    this.db = low(this.adapter).get('members')
-
     let member = this.db.find(param).value()
     if (member) {
       this.id = member.id
@@ -75,14 +72,17 @@ class Members {
     let newUser = {
       id: this.id,
       name: this.name,
-      email: this.email,
-      status: this.status,
-      skills: this.skills,
-      work: this.work
+      email: this.email
     }
+    if (this.status) newUser["status"] = this.status
+    if (this.skills) newUser["skills"] = this.skills
+    if (this.work) newUser["work"] = this.work
+
     this.db.push(newUser).write()
     return this
   }
+
+  delete = () => this.db.remove({ id: this.id }).write()
 }
 
 exports.Members = Members

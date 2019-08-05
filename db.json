@@ -72,21 +72,6 @@
       }
     },
     {
-      "id": "8bbef7fd-8d62-4f9e-9cf4-f5670cc1a887",
-      "name": "Jitendra Nirnejak",
-      "email": "jeetnirnejak@gmail.com",
-      "status": "inactive",
-      "skills": [
-        "react",
-        "scss",
-        "html",
-        "css",
-        "javascript",
-        "node.js"
-      ],
-      "work": {}
-    },
-    {
       "id": "b164d9b4-11fa-42ac-8a15-815af1d7f8eb",
       "name": "Jitendra Nirnejak",
       "email": "jeetnirnejak@gmail.com",
@@ -115,6 +100,14 @@
         "node.js"
       ],
       "work": {}
+    },
+    {
+      "id": "b88030f8-ec53-4f9d-a09d-9692bfe8cff1",
+      "name": "Hemant Kumar",
+      "email": "hemant40football@gmail.com",
+      "work": {
+        "isEmployed": false
+      }
     }
   ]
 }

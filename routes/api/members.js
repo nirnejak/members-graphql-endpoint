@@ -24,8 +24,15 @@ router.post('/', (req, res) => {
     const members = new Members(req.body)
     res.json(members.save().values())
   }
+})
 
-  // res.redirect('/') -> In the case of request by form submit
+router.delete('/:id', (req, res) => {
+  let member = new Members()
+  if (member.get({ id: req.params.id })) {
+    res.json(member.delete())
+  } else {
+    res.status(400).json({ message: `No member with the id of ${req.params.id}` })
+  }
 })
 
 module.exports = router 

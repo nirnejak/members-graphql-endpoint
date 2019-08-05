@@ -29,6 +29,16 @@ app.get('/', (req, res) => {
   res.render('index', context)
 })
 
+app.post('/', (req, res) => {
+  req.body["work"] = {
+    isEmployed: req.body.isEmployed === "on" ? true : false
+  }
+  const members = new Members(req.body)
+  if (members.save().values()) {
+    res.redirect('/')
+  }
+})
+
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'))
 })

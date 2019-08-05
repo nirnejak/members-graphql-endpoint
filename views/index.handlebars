@@ -1,11 +1,16 @@
 <h1 style="margin-top: 20px;">{{title}}</h1>
 
-<form action="/api/members" method="POST">
+<form action="/" method="POST">
   <label for="name">Name</label>
-  <input type="text" name="name" id="name">
+  <input type="text" name="name" id="name" required>
 
   <label for="email">Email</label>
-  <input type="text" name="email" id="email">
+  <input type="text" name="email" id="email" required>
+
+  <label for="isEmployed">
+    <input type="checkbox" name="isEmployed" id="isEmployed">
+    Is Employed
+  </label>
 
   <button type="submit">Send</button>
 </form>
