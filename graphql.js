@@ -1,19 +1,15 @@
 const { buildSchema } = require('graphql')
 
-const { Member } = require('./models/members')
+const { Members } = require('./models/members')
 
 exports.schema = buildSchema(`
-  type Name {
-    fname: String
-    lname: String
-  }
   type Work {
-    employed: Boolean
+    isEmployed: Boolean
     jobTitle: String
     company: String
   }
   type Member {
-    id: Int
+    id: String
     name: String
     email: String
     status: String
@@ -22,32 +18,24 @@ exports.schema = buildSchema(`
   }
   type Query {
     hello: String!  # Non-nullable
-    name: Name
-    tags(minLength: Int): [String]
-    member(id: Int): Member
-    members: [Member]
+    member(id: String): Member
+    members(id: String, name: String, status: String): [Member]
   }
 `)
 
 exports.root = {
   hello: () => 'Hello world!',
-  tags: (args) => {
-    let tags = ['user', 'developer', 'front-end']
-    if (args.minLength)
-      tags = tags.filter(tag => tag.length >= args.minLength)
-    return tags
-  },
-  name: {
-    fname: 'Jitendra',
-    lname: 'Nirnejak'
-  },
   member: (args) => {
+    let member = new Members()
     if (args.id) {
-      if (member.get({ id: req.params.id })) {
+      if (member.get(args)) {
         return member.values()
       } else {
         return { message: `No member with the id of ${req.params.id}` }
       }
     }
+  },
+  members: (args) => {
+    return args ? Members.filter(args) : Members.all()
   }
 }
