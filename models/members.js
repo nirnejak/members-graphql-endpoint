@@ -2,11 +2,9 @@ const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
 const uuid = require('uuid')
 
-const config = require('dotenv').config();
-
 class Members {
   constructor(params) {
-    this.adapter = new FileSync(process.env.DB_LOCATION || config.parsed.DB_LOCATION || 'db.json')
+    this.adapter = new FileSync(process.env.DB_LOCATION || 'db.json')
     this.collection = low(this.adapter).get('members')
 
     if (params) {
@@ -26,14 +24,14 @@ class Members {
   }
 
   static all = () => {
-    const adapter = new FileSync(process.env.DB_LOCATION || config.parsed.DB_LOCATION || 'db.json')
+    const adapter = new FileSync(process.env.DB_LOCATION || 'db.json')
     const db = low(adapter)
 
     return db.get('members').value()
   }
 
   static filter = (params) => {
-    const adapter = new FileSync(process.env.DB_LOCATION || config.parsed.DB_LOCATION || 'db.json')
+    const adapter = new FileSync(process.env.DB_LOCATION || 'db.json')
     const db = low(adapter)
 
     return db.get('members').filter(params).value()

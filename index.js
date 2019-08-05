@@ -3,7 +3,6 @@ const path = require('path')
 const exphbs = require('express-handlebars')
 
 const graphqlHTTP = require('express-graphql')
-const config = require('dotenv').config();
 
 const graphql = require('./graphql')
 const { logger } = require('./middleware/logger')
@@ -61,7 +60,7 @@ app.use('/graphql', graphqlHTTP({
 }));
 
 
-const PORT = process.env.PORT || config.parsed.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`Running a GraphQL API server at localhost:${PORT}/graphql`)
