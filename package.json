@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index",
-    "dev": "nodemon index"
+    "dev": "nodemon index",
+    "sass": "node-sass --include-path sass sass/style.scss public/css/style.css"
   },
   "author": "Jitendra Nirnejak",
   "license": "ISC",
@@ -16,6 +17,7 @@
     "graphql": "^14.4.2",
     "lowdb": "^1.0.0",
     "moment": "^2.24.0",
+    "node-sass-middleware": "^0.11.0",
     "uuid": "^3.3.2"
   },
   "devDependencies": {

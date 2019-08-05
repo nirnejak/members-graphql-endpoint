@@ -1,6 +1,7 @@
 const express = require('express')
 const path = require('path')
 const exphbs = require('express-handlebars')
+const sassMiddleware = require('node-sass-middleware')
 
 const graphqlHTTP = require('express-graphql')
 
@@ -19,6 +20,16 @@ app.set('view engine', 'handlebars')
 // Body Parser Middleware
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+
+// Sass Middleware
+app.use(sassMiddleware({
+  src: path.join(__dirname, 'sass'),
+  dest: path.join(__dirname, 'public', 'css'),
+  prefix: '/css',
+  outputStyle: "compressed",
+  debug: true,
+  response: false
+}))
 
 app.get('/', (req, res) => {
   let context = {
