@@ -82,14 +82,6 @@
       }
     },
     {
-      "id": "d90e858d-537a-4179-8f98-5731cf5dcc80",
-      "name": "Jitendra Nirnejak",
-      "email": "jeetnirnejak@gmail.com",
-      "work": {
-        "isEmployed": true
-      }
-    },
-    {
       "id": "605889d1-a60d-4caa-9d73-004c13557374",
       "name": "Hema Sinha",
       "email": "jeetnirnejak@gmail.com",
@@ -110,25 +102,6 @@
     },
     {
       "id": "1",
-      "name": "Jitendra Nirnejak",
-      "email": "jeetnirnejak@gmail.com",
-      "status": "inactive",
-      "skills": [
-        "react",
-        "css",
-        "html",
-        "css",
-        "javascript",
-        "node.js"
-      ],
-      "work": {
-        "isEmployed": true,
-        "jobTitle": "Software Developer",
-        "company": "Inkoop"
-      }
-    },
-    {
-      "id": "2627be9e-819f-4d56-995d-f7e3f2575bdd",
       "name": "Jitendra Nirnejak",
       "email": "jeetnirnejak@gmail.com",
       "status": "inactive",

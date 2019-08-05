@@ -41,6 +41,7 @@ exports.schema = buildSchema(`
   type Mutation {
     createMember(member: CreateMemberInput): Member
     updateMember(id: String!, member: UpdateMemberInput): Member
+    deleteMember(id: String!): [Member]
   }
 `)
 
@@ -70,7 +71,16 @@ exports.root = {
       updated_member.work = member.work
       return updated_member.save().values()
     } else {
-      return { message: `No member with the id of ${id}` }
+      throw new Error(`No member with the id of ${id}`);
+    }
+  },
+  deleteMember: ({ id }) => {
+    let member = new Members()
+    if (member.get({ id })) {
+      member.delete()
+      return Members.all()
+    } else {
+      throw new Error(`No member with the id of ${id}`);
     }
   }
 }

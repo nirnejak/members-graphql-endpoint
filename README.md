@@ -61,7 +61,6 @@ mutation {
     }
   }
 }
-
 ```
 
 ```graphql
@@ -90,5 +89,21 @@ mutation {
     }
   }
 }
+```
 
+```graphql
+mutation {
+  deleteMember(id: "2627be9e-819f-4d56-995d-f7e3f2575bdd") {
+    id
+    name
+    email
+    status
+    skills
+    work {
+      isEmployed
+      jobTitle
+      company
+    }
+  }
+}
 ```
