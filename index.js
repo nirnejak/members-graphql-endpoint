@@ -1,4 +1,5 @@
 const express = require('express')
+const jwt = require('jsonwebtoken')
 const path = require('path')
 const exphbs = require('express-handlebars')
 const sassMiddleware = require('node-sass-middleware')
@@ -57,6 +58,46 @@ app.get('/welcome', (req, res) => {
   res.send('Welcome')
 })
 
+app.post('/api/login', (req, res) => {
+  const user = {
+    id: 1,
+    username: "nirnejak",
+    email: "jeetnirnejak@gmail.com"
+  }
+  jwt.sign({ user }, 'secretkey', { expiresIn: '30s' }, (err, token) => {
+    res.json({ token })
+  })
+})
+
+app.get('/api/user', verifyToken, (req, res) => {
+  jwt.verify(req.token, 'secretket', (err, authData) => {
+    if (err) {
+      // Forbidden
+      res.sendStatus(403)
+    } else {
+      res.json({
+        message: Success,
+        authData
+      })
+    }
+  })
+})
+
+function verifyToken(req, res, next) {
+  const bearerHeader = req.headers['authorization'];
+
+  if (typeof bearerHeader !== "undefined") {
+    const bearer = bearerHeader.split(" ")
+    const bearerToken = bearer[1]
+    req.token = bearerToken
+    next()
+  } else {
+    // Forbidden
+    res.sendStatus(403)
+  }
+
+}
+
 // Set a static folder using Middleware
 app.use(express.static(path.join(__dirname, 'public')))
 
@@ -74,5 +115,5 @@ app.use('/graphql', graphqlHTTP({
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log(`Running a GraphQL API server at localhost:${PORT}/graphql`)
+  console.log(`Running the server at localhost:${PORT}`)
 });
