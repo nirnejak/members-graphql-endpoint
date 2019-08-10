@@ -1,6 +1,6 @@
 # GraphQL App
 
-A Node.js App using Express.js, GraphQL and Handlebars
+A Node.js App using Node.js, Express.js, LowDB, GraphQL and Handlebars
 
 ## Query
 ```graphql
