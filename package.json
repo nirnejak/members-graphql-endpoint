@@ -6,7 +6,6 @@
   "scripts": {
     "start": "node index",
     "dev": "nodemon index",
-    "sass": "node-sass --include-path sass sass/style.scss public/css/style.css"
   },
   "author": "Jitendra Nirnejak",
   "license": "ISC",
