@@ -8,11 +8,13 @@ const graphqlHTTP = require('express-graphql')
 
 const graphql = require('./graphql')
 const { logger } = require('./middleware/logger')
+const { authMiddleware } = require('./middleware/auth')
 const { Members } = require('./models/members')
 
 const app = express();
 // Init Logger
 app.use(logger)
+app.use(authMiddleware)
 
 // Handlebars Middleware
 app.engine('handlebars', exphbs({ defaultLayout: 'main' }))
