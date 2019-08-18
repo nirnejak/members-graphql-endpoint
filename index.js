@@ -6,14 +6,22 @@ const sassMiddleware = require('node-sass-middleware')
 
 const graphqlHTTP = require('express-graphql')
 
+// GraphQL Server
 const graphql = require('./graphql')
+
+// Middlewares
 const { logger } = require('./middleware/logger')
 const { authMiddleware } = require('./middleware/auth')
+
+// API Routes
 const { Members } = require('./models/members')
 
 const app = express();
+
 // Init Logger
 app.use(logger)
+
+// Init Authentication Middleware
 app.use(authMiddleware)
 
 // Handlebars Middleware
