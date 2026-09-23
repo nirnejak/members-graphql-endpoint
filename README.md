@@ -39,7 +39,7 @@ mutation {
   createMember(
     member: {
       name: "Jitendra Nirnejak",
-      email: "jeetnirnejak@gmail.com",
+      email: "jeetnirnejak@example.com",
       status: "active", 
       skills: ["react", "css", "html", "css", "javascript", "node.js"], 
       work: {
